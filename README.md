@@ -60,7 +60,7 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Bike Rental API <a name="about-project"></a>
+# 📖 SCHOOL MANAGEMENT SYSTEM <a name="about-project"></a>
 
 **StakeConnect API** is an API designed access a school's entire activities.The database designed is based on this schema ![Schema coming soon ...](https://)
 
