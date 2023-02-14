@@ -8,6 +8,8 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+gem 'bullet', group: 'development'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
