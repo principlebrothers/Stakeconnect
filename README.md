@@ -188,11 +188,6 @@ Example:
 - Twitter: [@adonu_ernest](https://twitter.com/adonu_ernest)
 - LinkedIn: [Ernest Anyewe Adonu](www.linkedin.com/in/ernest-anyewe-adonu)
 
-👤 **Jerry Owusu**
-
-- GitHub: [@principlebrothers](https://github.com/principlebrothers)
-- Twitter: [@adonu_ernest](https://twitter.com/adonu_ernest)
-- LinkedIn: [Ernest Anyewe Adonu](www.linkedin.com/in/ernest-anyewe-adonu)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -218,7 +213,7 @@ Feel free to check the [issues page](https://github.com/principlebrothers/Stakec
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, kindly give as a ⭐️
+If you like this project, kindly give it a ⭐️
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
