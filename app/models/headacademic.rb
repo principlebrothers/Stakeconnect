@@ -1,0 +1,3 @@
+class HeadAcademic < Administration
+
+end
