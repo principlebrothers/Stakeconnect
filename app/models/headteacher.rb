@@ -1,3 +1,2 @@
-class HeadTeacher < Administration
-
+class HeadTeacher < Administrator
 end
