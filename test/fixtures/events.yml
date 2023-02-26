@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyString
+  time: 2023-02-25 09:09:25
+  title: MyString
+  description: MyText
+  semester: 1
+  administrator: one
+
+two:
+  location: MyString
+  time: 2023-02-25 09:09:25
+  title: MyString
+  description: MyText
+  semester: 1
+  administrator: two
