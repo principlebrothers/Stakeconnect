@@ -116,6 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
     t.bigint "administrator_id"
     t.bigint "parent_id"
     t.bigint "grade_id"
+    t.string "image"
     t.index ["administrator_id"], name: "index_students_on_administrator_id"
     t.index ["grade_id"], name: "index_students_on_grade_id"
     t.index ["parent_id"], name: "index_students_on_parent_id"
@@ -145,9 +146,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password"
-    t.string "password_confirmation"
     t.string "password_digest"
+    t.string "image"
     t.string "type"
   end
 
