@@ -1,0 +1,2 @@
+class HeadAcademic < Administrator
+end
