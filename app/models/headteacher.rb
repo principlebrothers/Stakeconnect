@@ -1,2 +1,0 @@
-class HeadTeacher < Administrator
-end
