@@ -6,6 +6,7 @@ class Student < ApplicationRecord
 
   validates :name, presence: true
   validates :parent_id, presence: true
+  validates :image, presence: true
   validates :administrator_id, presence: true
   validates :grade_id, presence: true
 end
