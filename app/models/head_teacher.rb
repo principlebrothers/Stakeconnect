@@ -1,0 +1,2 @@
+class HeadTeacher < Administrator
+end
