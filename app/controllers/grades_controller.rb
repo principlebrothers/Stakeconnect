@@ -1,5 +1,5 @@
 class GradesController < ApplicationController
-  before_action :set_grade, only: %i[ show update destroy ]
+  before_action :set_grade, only: %i[show update destroy]
 
   # GET /grades
   def index
@@ -39,13 +39,14 @@ class GradesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_grade
-      @grade = Grade.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def grade_params
-      params.require(:grade).permit(:grade_num, :teacher_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_grade
+    @grade = Grade.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def grade_params
+    params.require(:grade).permit(:grade_num, :teacher_id)
+  end
 end
