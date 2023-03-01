@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-  before_action :set_result, only: %i[ show update destroy ]
+  before_action :set_result, only: %i[show update destroy]
 
   # GET /results
   def index
@@ -39,13 +39,14 @@ class ResultsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_result
-      @result = Result.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def result_params
-      params.require(:result).permit(:date, :type, :score, :course_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_result
+    @result = Result.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def result_params
+    params.require(:result).permit(:date, :type, :score, :course_id)
+  end
 end
