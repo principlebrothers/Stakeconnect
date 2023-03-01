@@ -6,8 +6,8 @@ class User < ApplicationRecord
   validates :number, presence: true, uniqueness: true
   validates :image, presence: true
   # validates :role, presence: true
-  validates :password_digest, presence: true, length: { minimum: 6 }
-  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true, length: { minimum: 6 }
 
   def admin?
     type == 'Admin'
