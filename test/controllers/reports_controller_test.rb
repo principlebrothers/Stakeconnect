@@ -1,35 +1,37 @@
-require "test_helper"
+require 'test_helper'
 
 class ReportsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @report = reports(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get reports_url, as: :json
     assert_response :success
   end
 
-  test "should create report" do
-    assert_difference("Report.count") do
-      post reports_url, params: { report: { date: @report.date, result_id: @report.result_id, student_id: @report.student_id } }, as: :json
+  test 'should create report' do
+    assert_difference('Report.count') do
+      post reports_url,
+           params: { report: { date: @report.date, result_id: @report.result_id, student_id: @report.student_id } }, as: :json
     end
 
     assert_response :created
   end
 
-  test "should show report" do
+  test 'should show report' do
     get report_url(@report), as: :json
     assert_response :success
   end
 
-  test "should update report" do
-    patch report_url(@report), params: { report: { date: @report.date, result_id: @report.result_id, student_id: @report.student_id } }, as: :json
+  test 'should update report' do
+    patch report_url(@report),
+          params: { report: { date: @report.date, result_id: @report.result_id, student_id: @report.student_id } }, as: :json
     assert_response :success
   end
 
-  test "should destroy report" do
-    assert_difference("Report.count", -1) do
+  test 'should destroy report' do
+    assert_difference('Report.count', -1) do
       delete report_url(@report), as: :json
     end
 
