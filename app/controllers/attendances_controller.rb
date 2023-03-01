@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: %i[ show update destroy ]
+  before_action :set_attendance, only: %i[show update destroy]
 
   # GET /attendances
   def index
@@ -39,13 +39,14 @@ class AttendancesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_attendance
-      @attendance = Attendance.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def attendance_params
-      params.require(:attendance).permit(:date, :present, :absent, :student_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_attendance
+    @attendance = Attendance.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def attendance_params
+    params.require(:attendance).permit(:date, :present, :absent, :student_id)
+  end
 end
