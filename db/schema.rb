@@ -83,10 +83,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   end
 
   create_table "parents", force: :cascade do |t|
-    t.text "address"
+    t.string "name", null: false
+    t.integer "number", null: false
+    t.string "email", null: false
+    t.string "image", null: false
+    t.string "type", null: false
+    t.string "password", null: false
+    t.string "password_confirmation", null: false
+    t.integer "role"
+    t.text "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
+    t.index ["email"], name: "index_parents_on_email", unique: true
+    t.index ["number"], name: "index_parents_on_number", unique: true
   end
 
   create_table "reports", force: :cascade do |t|
@@ -110,13 +119,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "administrator_id"
     t.bigint "parent_id"
     t.bigint "grade_id"
-    t.string "image"
     t.index ["administrator_id"], name: "index_students_on_administrator_id"
     t.index ["grade_id"], name: "index_students_on_grade_id"
     t.index ["parent_id"], name: "index_students_on_parent_id"
@@ -132,23 +141,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   end
 
   create_table "teachers", force: :cascade do |t|
+    t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "course_id"
-    t.string "type"
-    t.index ["course_id"], name: "index_teachers_on_course_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.integer "number"
-    t.string "email"
+    t.string "name", null: false
+    t.integer "number", null: false
+    t.string "email", null: false
+    t.string "image", null: false
+    t.string "type", null: false
+    t.string "password", null: false
+    t.string "password_confirmation", null: false
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "image"
-    t.string "type"
   end
 
   add_foreign_key "administrator_parent_teachers", "administrators"
@@ -168,5 +176,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   add_foreign_key "students", "parents"
   add_foreign_key "teacher_courses", "courses"
   add_foreign_key "teacher_courses", "teachers"
-  add_foreign_key "teachers", "courses"
 end
