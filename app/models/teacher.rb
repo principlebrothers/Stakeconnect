@@ -5,6 +5,4 @@ class Teacher < User
   has_many :courses, through: :teacher_courses
   has_many :administrator_parent_teachers
   has_many :parents, through: :administrator_parent_teachers
-
-  validates :course_id, presence: true
 end
