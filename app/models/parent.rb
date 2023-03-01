@@ -1,4 +1,6 @@
 class Parent < User
+  attribute :address, :text
+
   has_many :students
   has_many :administrator_parent_teachers
   has_many :teachers, through: :administrator_parent_teachers
