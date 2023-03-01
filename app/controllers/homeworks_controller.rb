@@ -1,5 +1,5 @@
 class HomeworksController < ApplicationController
-  before_action :set_homework, only: %i[ show update destroy ]
+  before_action :set_homework, only: %i[show update destroy]
 
   # GET /homeworks
   def index
@@ -39,13 +39,14 @@ class HomeworksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_homework
-      @homework = Homework.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def homework_params
-      params.require(:homework).permit(:start_date, :end_date, :question, :course_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_homework
+    @homework = Homework.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def homework_params
+    params.require(:homework).permit(:start_date, :end_date, :question, :course_id)
+  end
 end
