@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "type"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -141,7 +142,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   end
 
   create_table "teachers", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "number", null: false
+    t.string "email", null: false
+    t.string "image", null: false
     t.string "type", null: false
+    t.string "password", null: false
+    t.string "password_confirmation", null: false
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
