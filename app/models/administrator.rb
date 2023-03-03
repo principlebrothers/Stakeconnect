@@ -1,4 +1,6 @@
 class Administrator < User
+  self.table_name = 'administrators'
+
   def self.type
     %w[HeadTeacher HeadAcademic]
   end
