@@ -1,6 +1,5 @@
 class Teacher < User
   self.table_name = 'teachers'
-  self.inheritance_column = :type
 
   has_many :grades
   has_many :students, through: :grades
