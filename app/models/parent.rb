@@ -1,7 +1,5 @@
 class Parent < User
   self.table_name = 'parents'
-  
-  attribute :address, :text
 
   has_many :students
   has_many :administrator_parent_teachers
