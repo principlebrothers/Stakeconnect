@@ -4,7 +4,6 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :administrator_id, presence: true
   validates :location, presence: true
-  validates :time, presence: true
   validates :title, presence: true
   validates :description, presence: true
   validates :semester, presence: true, numericality: { only_integer: true }
