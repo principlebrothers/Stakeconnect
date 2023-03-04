@@ -26,7 +26,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   end
 
   create_table "administrators", force: :cascade do |t|
-    t.string "type"
+    t.string "name", null: false
+    t.integer "number", null: false
+    t.string "email", null: false
+    t.string "image", null: false
+    t.string "type", null: false
+    t.string "password", null: false
+    t.string "password_confirmation", null: false
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   create_table "attendances", force: :cascade do |t|
     t.date "date"
     t.boolean "present"
-    t.boolean "absent"
+    t.boolean "absent", default: false
     t.bigint "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,11 +60,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "location"
+    t.date "date", null: false
+    t.string "location", null: false
+    t.string "image"
     t.time "time"
-    t.string "title"
-    t.text "description"
-    t.integer "semester"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "semester", null: false
     t.bigint "administrator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
