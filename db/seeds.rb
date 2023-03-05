@@ -41,6 +41,11 @@ music = Course.create(name: 'Music', semester: 1, grade_id: grade_1.id, administ
 religious = Course.create(name: 'Religious Studies', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
 health = Course.create(name: 'Health', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
 
+teacher_course_1 = TeacherCourse.create(teacher_id: teacher_1.id, course_id: english.id)
+teacher_course_2 = TeacherCourse.create(teacher_id: teacher_1.id, course_id: maths.id)
+teacher_course_3 = TeacherCourse.create(teacher_id: teacher_2.id, course_id: science.id)
+teacher_course_4 = TeacherCourse.create(teacher_id: teacher_2.id, course_id: social.id)
+
 english_home = Homework.create(start_date: Date.today, end_date: Date.tomorrow, question: 'Read and answer the questions in chapter 5', course_id: english.id)
 maths_home = Homework.create(start_date: Date.today, end_date: Date.tomorrow, question: 'Answer the questions in chapter 5 on indices', course_id: maths.id)
 
