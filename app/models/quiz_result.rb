@@ -1,2 +1,2 @@
-class Quiz < Result
+class QuizResult < Result
 end
