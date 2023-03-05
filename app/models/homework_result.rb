@@ -1,0 +1,2 @@
+class HomeworkResult < Result
+end
