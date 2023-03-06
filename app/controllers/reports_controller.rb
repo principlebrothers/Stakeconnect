@@ -6,9 +6,9 @@ class ReportsController < ApplicationController
     @reports = Report.includes([:courses]).all
 
     render json: @reports, include: {
-                                    courses: { only: %i[name semester],
-                                               include: { results: { only: %i[type score student_id] } } }
-                                  }
+      courses: { only: %i[name semester],
+                 include: { results: { only: %i[type score student_id] } } }
+    }
   end
 
   # GET /reports/1
