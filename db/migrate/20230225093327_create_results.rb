@@ -5,6 +5,7 @@ class CreateResults < ActiveRecord::Migration[7.0]
       t.string :type
       t.integer :score
       t.references :course, null: false, foreign_key: true
+      t.references :student, null: false, foreign_key: true
 
       t.timestamps
     end
