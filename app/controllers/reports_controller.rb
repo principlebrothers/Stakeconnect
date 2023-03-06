@@ -5,11 +5,10 @@ class ReportsController < ApplicationController
   def index
     @reports = Report.includes([:courses]).all
 
-    render json: @reports.to_json(include: {
-                                    courses: { only: %i[id name] },
+    render json: @reports, include: {
                                     courses: { only: %i[name semester],
                                                include: { results: { only: %i[type score student_id] } } }
-                                  })
+                                  }
   end
 
   # GET /reports/1
