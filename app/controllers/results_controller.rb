@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-  before_action :set_result, only: %i[show update destroy]
+  before_action :set_result, only: [:show, :update, :destroy]
 
   # GET /results
   def index
@@ -10,7 +10,10 @@ class ResultsController < ApplicationController
 
   # GET /results/1
   def show
-    render json: @result
+    render json: @result, include: {
+      course: { only: [:name, :semester] },
+      student: { only: [:id, :name, :image] }
+    }
   end
 
   # POST /results
@@ -35,7 +38,11 @@ class ResultsController < ApplicationController
 
   # DELETE /results/1
   def destroy
-    @result.destroy
+    if @result.destroy
+      render json: { message: "Result deleted successfully" }, status: :ok
+    else
+      render json: @result.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -47,6 +54,6 @@ class ResultsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def result_params
-    params.require(:result).permit(:date, :type, :score, :course_id)
+    params.require(:result).permit(:date, :type, :score, :course_id, :student_id)
   end
 end
