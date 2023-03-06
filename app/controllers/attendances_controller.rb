@@ -10,7 +10,9 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1
   def show
-    render json: @attendance
+    render json: @attendance,include: {
+      student: { only: [:id, :name, :image] }
+    }
   end
 
   # POST /attendances
@@ -35,7 +37,11 @@ class AttendancesController < ApplicationController
 
   # DELETE /attendances/1
   def destroy
-    @attendance.destroy
+    if @attendance.destroy
+      render json: { message: "Attendance deleted" }, status: :ok
+    else
+      render json: @attendance.errors, status: :unprocessable_entity
+    end
   end
 
   private
