@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    render json: @event
+    render json: @event, include: { administrator: { only: [:name, :email, :image] } }
   end
 
   # POST /events
@@ -35,7 +35,11 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   def destroy
-    @event.destroy
+    if @event.destroy
+      render json: { message: "Event deleted" }, status: :ok
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -47,6 +51,6 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(date:, :location, :image, :time, :title, :description, :semester, :administrator_id)
+    params.require(:event).permit(:date, :location, :image, :time, :title, :description, :semester, :administrator_id)
   end
 end
