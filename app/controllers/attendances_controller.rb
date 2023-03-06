@@ -10,8 +10,8 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1
   def show
-    render json: @attendance,include: {
-      student: { only: [:id, :name, :image] }
+    render json: @attendance, include: {
+      student: { only: %i[id name image] }
     }
   end
 
@@ -38,7 +38,7 @@ class AttendancesController < ApplicationController
   # DELETE /attendances/1
   def destroy
     if @attendance.destroy
-      render json: { message: "Attendance deleted" }, status: :ok
+      render json: { message: 'Attendance deleted' }, status: :ok
     else
       render json: @attendance.errors, status: :unprocessable_entity
     end

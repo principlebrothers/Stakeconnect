@@ -1,5 +1,5 @@
 class AdministratorParentTeachersController < ApplicationController
-  before_action :set_administrator_parent_teacher, only: %i[ show update destroy ]
+  before_action :set_administrator_parent_teacher, only: %i[show update destroy]
 
   # GET /administrator_parent_teachers
   def index
@@ -36,7 +36,7 @@ class AdministratorParentTeachersController < ApplicationController
   # DELETE /administrator_parent_teachers/1
   def destroy
     if @administrator_parent_teacher.destroy
-      render json: { message: "AdministratorParentTeacher deleted" }, status: :ok
+      render json: { message: 'AdministratorParentTeacher deleted' }, status: :ok
     else
       render json: @administrator_parent_teacher.errors, status: :unprocessable_entity
     end

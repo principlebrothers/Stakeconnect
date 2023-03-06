@@ -8,5 +8,4 @@ class Result < ApplicationRecord
   validates :student_id, presence: true
   validates :date, presence: true
   validates :score, presence: true
-
 end

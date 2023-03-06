@@ -1,5 +1,5 @@
 class TeacherCoursesController < ApplicationController
-  before_action :set_teacher_course, only: %i[ show update destroy ]
+  before_action :set_teacher_course, only: %i[show update destroy]
 
   # GET /teacher_courses
   def index
@@ -36,20 +36,21 @@ class TeacherCoursesController < ApplicationController
   # DELETE /teacher_courses/1
   def destroy
     if @teacher_course.destroy
-      render json: { message: "TeacherCourse deleted" }, status: :ok
+      render json: { message: 'TeacherCourse deleted' }, status: :ok
     else
       render json: @teacher_course.errors, status: :unprocessable_entity
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_teacher_course
-      @teacher_course = TeacherCourse.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def teacher_course_params
-      params.require(:teacher_course).permit(:teacher_id, :course_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_teacher_course
+    @teacher_course = TeacherCourse.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def teacher_course_params
+    params.require(:teacher_course).permit(:teacher_id, :course_id)
+  end
 end

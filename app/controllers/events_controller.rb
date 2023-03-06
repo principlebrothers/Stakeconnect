@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    render json: @event, include: { administrator: { only: [:name, :email, :image] } }
+    render json: @event, include: { administrator: { only: %i[name email image] } }
   end
 
   # POST /events
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   def destroy
     if @event.destroy
-      render json: { message: "Event deleted" }, status: :ok
+      render json: { message: 'Event deleted' }, status: :ok
     else
       render json: @event.errors, status: :unprocessable_entity
     end

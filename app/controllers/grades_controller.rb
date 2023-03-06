@@ -11,10 +11,10 @@ class GradesController < ApplicationController
   # GET /grades/1
   def show
     render json: @grade.to_json(include: {
-    teacher: { only: [:id, :name, :email, :image] },
-    students: { only: [:id, :name, :image] },
-    courses: { only: [:id, :name, :semester] }
-  })
+                                  teacher: { only: %i[id name email image] },
+                                  students: { only: %i[id name image] },
+                                  courses: { only: %i[id name semester] }
+                                })
   end
 
   # POST /grades
@@ -40,7 +40,7 @@ class GradesController < ApplicationController
   # DELETE /grades/1
   def destroy
     if @grade.destroy
-      render json: {message: "Grade deleted successfully"}, status: :ok
+      render json: { message: 'Grade deleted successfully' }, status: :ok
     else
       render json: @grade.errors, status: :unprocessable_entity
     end

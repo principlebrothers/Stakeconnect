@@ -6,22 +6,21 @@ class StudentsController < ApplicationController
     @students = Student.all
 
     render json: @students.to_json(include: {
-      parent: { only: [:name, :email, :number, :address] },
-      grade: { only: [:grade_num] },
-    })
+                                     parent: { only: %i[name email number address] },
+                                     grade: { only: [:grade_num] }
+                                   })
   end
 
   # GET /students/1
   def show
     render json: @student.to_json(include: {
-      parent: { only: [:name, :email, :number, :address] },
-      grade: { only: [:grade_num] },
-      reports: { only: [:date, :remark],
-        include: { courses: { only: [:name, :semester],
-        include: { results: { only: [:type, :score, :date] } }
-        } }
-      }
-    })
+                                    parent: { only: %i[name email number address] },
+                                    grade: { only: [:grade_num] },
+                                    reports: { only: %i[date remark],
+                                               include: { courses: { only: %i[name semester],
+                                                                     include: { results: { only: %i[type score
+                                                                                                    date] } } } } }
+                                  })
   end
 
   # POST /students
@@ -48,7 +47,7 @@ class StudentsController < ApplicationController
   def destroy
     @student = set_student
     if @student.destroy
-      render json: {message: "Student deleted successfully"}, status: :ok
+      render json: { message: 'Student deleted successfully' }, status: :ok
     else
       render json: @student.errors, status: :unprocessable_entity
     end

@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-  before_action :set_result, only: [:show, :update, :destroy]
+  before_action :set_result, only: %i[show update destroy]
 
   # GET /results
   def index
@@ -11,8 +11,8 @@ class ResultsController < ApplicationController
   # GET /results/1
   def show
     render json: @result, include: {
-      course: { only: [:name, :semester] },
-      student: { only: [:id, :name, :image] }
+      course: { only: %i[name semester] },
+      student: { only: %i[id name image] }
     }
   end
 
@@ -39,7 +39,7 @@ class ResultsController < ApplicationController
   # DELETE /results/1
   def destroy
     if @result.destroy
-      render json: { message: "Result deleted successfully" }, status: :ok
+      render json: { message: 'Result deleted successfully' }, status: :ok
     else
       render json: @result.errors, status: :unprocessable_entity
     end

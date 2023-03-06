@@ -6,22 +6,20 @@ class ReportsController < ApplicationController
     @reports = Report.includes([:courses]).all
 
     render json: @reports.to_json(include: {
-      courses: { only: [:id, :name] },
-      courses: { only: [:name, :semester],
-        include: { results: { only: [:type, :score, :student_id] } }
-        }
-    })
+                                    courses: { only: %i[id name] },
+                                    courses: { only: %i[name semester],
+                                               include: { results: { only: %i[type score student_id] } } }
+                                  })
   end
 
   # GET /reports/1
   def show
     @report = Report.find(params[:id])
     render json: @report.to_json(include: {
-      student: { only: [:id, :name, :image] },
-      courses: { only: [:name, :semester],
-        include: { results: { only: [:type, :score, :student_id] } }
-        }
-    })
+                                   student: { only: %i[id name image] },
+                                   courses: { only: %i[name semester],
+                                              include: { results: { only: %i[type score student_id] } } }
+                                 })
   end
 
   # POST /reports
@@ -48,7 +46,7 @@ class ReportsController < ApplicationController
   def destroy
     @report = set_report
     if @report.destroy
-      render json: {message: "Report deleted successfully"}, status: :ok
+      render json: { message: 'Report deleted successfully' }, status: :ok
     else
       render json: @report.errors, status: :unprocessable_entity
     end
