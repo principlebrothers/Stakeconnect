@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_05_185107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_attendances_on_student_id"
+  end
+
+  create_table "course_reports", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "report_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_reports_on_course_id"
+    t.index ["report_id"], name: "index_course_reports_on_report_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -109,11 +118,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
 
   create_table "reports", force: :cascade do |t|
     t.date "date"
+    t.text "remark"
     t.bigint "student_id", null: false
-    t.bigint "result_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["result_id"], name: "index_reports_on_result_id"
     t.index ["student_id"], name: "index_reports_on_student_id"
   end
 
@@ -122,9 +130,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
     t.string "type"
     t.integer "score"
     t.bigint "course_id", null: false
+    t.bigint "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_results_on_course_id"
+    t.index ["student_id"], name: "index_results_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -179,14 +189,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_195404) do
   add_foreign_key "administrator_parent_teachers", "parents"
   add_foreign_key "administrator_parent_teachers", "teachers"
   add_foreign_key "attendances", "students"
+  add_foreign_key "course_reports", "courses"
+  add_foreign_key "course_reports", "reports"
   add_foreign_key "courses", "administrators"
   add_foreign_key "courses", "grades"
   add_foreign_key "events", "administrators"
   add_foreign_key "grades", "teachers"
   add_foreign_key "homeworks", "courses"
-  add_foreign_key "reports", "results"
   add_foreign_key "reports", "students"
   add_foreign_key "results", "courses"
+  add_foreign_key "results", "students"
   add_foreign_key "students", "administrators"
   add_foreign_key "students", "grades"
   add_foreign_key "students", "parents"
