@@ -35,7 +35,11 @@ class AdministratorsController < ApplicationController
 
   # DELETE /administrators/1
   def destroy
-    @administrator.destroy
+    if @administrator.destroy
+      render json: { message: "Administrator deleted" }, status: :ok
+    else
+      render json: @administrator.errors, status: :unprocessable_entity
+    end
   end
 
   private
