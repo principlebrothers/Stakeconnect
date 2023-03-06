@@ -10,7 +10,9 @@ class HomeworksController < ApplicationController
 
   # GET /homeworks/1
   def show
-    render json: @homework
+    @homework = Homework.includes(:course).find(params[:id])
+
+    render json: { course_name: @homework.course.name, question: @homework.question, start_date: @homework.start_date, end_date: @homework.end_date }
   end
 
   # POST /homeworks
@@ -35,7 +37,11 @@ class HomeworksController < ApplicationController
 
   # DELETE /homeworks/1
   def destroy
-    @homework.destroy
+    if @homework.destroy
+      render json: {message: "Homework deleted successfully"}, status: :ok
+    else
+      render json: @homework.errors, status: :unprocessable_entity
+    end
   end
 
   private
