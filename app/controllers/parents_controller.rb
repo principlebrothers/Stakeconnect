@@ -10,7 +10,12 @@ class ParentsController < ApplicationController
 
   # GET /parents/1
   def show
-    render json: @parent
+    render json: @parent.to_json(include: {
+    students: {
+      only: [:id, :name, :image],
+      include: { grade: { only: [:grade_num] } }
+    }
+  })
   end
 
   # POST /parents
@@ -35,7 +40,11 @@ class ParentsController < ApplicationController
 
   # DELETE /parents/1
   def destroy
-    @parent.destroy
+    if @parent.destroy
+      render json: {message: "Parent deleted successfully"}, status: :ok
+    else
+      render json: @parent.errors, status: :unprocessable_entity
+    end
   end
 
   private
