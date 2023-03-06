@@ -3,14 +3,25 @@ class ReportsController < ApplicationController
 
   # GET /reports
   def index
-    @reports = Report.all
+    @reports = Report.includes([:courses]).all
 
-    render json: @reports
+    render json: @reports.to_json(include: {
+      courses: { only: [:id, :name] },
+      courses: { only: [:name, :semester],
+        include: { results: { only: [:type, :score, :student_id] } }
+        }
+    })
   end
 
   # GET /reports/1
   def show
-    render json: @report
+    @report = Report.find(params[:id])
+    render json: @report.to_json(include: {
+      student: { only: [:id, :name, :image] },
+      courses: { only: [:name, :semester],
+        include: { results: { only: [:type, :score, :student_id] } }
+        }
+    })
   end
 
   # POST /reports
@@ -35,7 +46,12 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1
   def destroy
-    @report.destroy
+    @report = set_report
+    if @report.destroy
+      render json: {message: "Report deleted successfully"}, status: :ok
+    else
+      render json: @report.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -47,6 +63,6 @@ class ReportsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def report_params
-    params.require(:report).permit(:date, :student_id, :result_id)
+    params.require(:report).permit(:date, :remark, :student_id)
   end
 end
