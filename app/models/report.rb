@@ -1,8 +1,9 @@
 class Report < ApplicationRecord
   belongs_to :student
-  belongs_to :result
+  has_many :course_reports
+  has_many :courses, through: :course_reports
 
   validates :date, presence: true
+  validates :remark, presence: true
   validates :student_id, presence: true
-  validates :result_id, presence: true
 end
