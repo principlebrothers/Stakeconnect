@@ -10,7 +10,12 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
-    render json: @course
+    render json: @course, include: {
+      grade: {only: [:grade_num]},
+      teachers: {only: [:name, :email, :image]},
+      results: {only: [:student_id, :date, :type, :score]},
+      homeworks: {only: [:id, :start_date, :end_date, :question]},
+    }
   end
 
   # POST /courses
@@ -35,7 +40,11 @@ class CoursesController < ApplicationController
 
   # DELETE /courses/1
   def destroy
-    @course.destroy
+    if @course.destroy
+      render json: { message: "Course deleted" }, status: :ok
+    else
+      render json: @course.errors, status: :unprocessable_entity
+    end
   end
 
   private
