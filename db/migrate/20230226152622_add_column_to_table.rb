@@ -1,3 +1,12 @@
 class AddColumnToTable < ActiveRecord::Migration[7.0]
-  def change; end
+  def change
+    add_column :users, :jti, :string, null: false
+    add_index :users, :jti, unique: true
+    add_column :administrators, :jti, :string, null: false
+    add_index :administrators, :jti, unique: true
+    add_column :parents, :jti, :string, null: false
+    add_index :parents, :jti, unique: true
+    add_column :teachers, :jti, :string, null: false
+    add_index :teachers, :jti, unique: true
+  end
 end

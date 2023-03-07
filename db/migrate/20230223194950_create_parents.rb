@@ -6,10 +6,12 @@ class CreateParents < ActiveRecord::Migration[7.0]
       t.string :email, null: false
       t.string :image, null: false
       t.string :type, null: false
-      t.string :password, null: false
-      t.string :password_confirmation, null: false
+      t.string :encrypted_password, null: false
       t.integer :role
       t.text :address, null: false
+      t.string   :reset_password_token
+      t.datetime :reset_password_sent_at
+      t.datetime :remember_created_at
 
       t.timestamps
     end
