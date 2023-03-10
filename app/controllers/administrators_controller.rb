@@ -51,6 +51,6 @@ class AdministratorsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def administrator_params
-    params.require(:administrator).permit(:name, :number, :email, :password, :password_confirmation, :image, :role)
+    params.require(:administrator).permit(:name, :number, :email, :image, :password)
   end
 end
