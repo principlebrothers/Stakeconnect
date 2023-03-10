@@ -45,7 +45,6 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1
   def destroy
-    @student = set_student
     if @student.destroy
       render json: { message: 'Student deleted successfully' }, status: :ok
     else
