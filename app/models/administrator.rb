@@ -1,5 +1,11 @@
-class Administrator < User
-  self.table_name = 'administrators'
+class Administrator < ApplicationRecord
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :number, presence: true, uniqueness: true
+  validates :image, presence: true
+  # validates :role, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true, length: { minimum: 6 }
 
   has_many :courses
   has_many :students
