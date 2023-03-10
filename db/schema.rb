@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_05_185107) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,10 +30,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_185107) do
     t.integer "number", null: false
     t.string "email", null: false
     t.string "image", null: false
-    t.string "password_confirmation", null: false
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jti", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_administrators_on_email", unique: true
+    t.index ["jti"], name: "index_administrators_on_jti", unique: true
+    t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -103,13 +110,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_185107) do
     t.integer "number", null: false
     t.string "email", null: false
     t.string "image", null: false
-    t.string "password_confirmation", null: false
     t.integer "role"
     t.text "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jti", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["email"], name: "index_parents_on_email", unique: true
-    t.index ["number"], name: "index_parents_on_number", unique: true
+    t.index ["jti"], name: "index_parents_on_jti", unique: true
+    t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
   end
 
   create_table "reports", force: :cascade do |t|
@@ -160,10 +172,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_185107) do
     t.integer "number", null: false
     t.string "email", null: false
     t.string "image", null: false
-    t.string "password_confirmation", null: false
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jti", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_teachers_on_email", unique: true
+    t.index ["jti"], name: "index_teachers_on_jti", unique: true
+    t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
 
   add_foreign_key "administrator_parent_teachers", "administrators"
