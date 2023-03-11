@@ -2,7 +2,7 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 # Create Administrators
-# admin_1 = Administrator.create(number: '0555652356', name: 'Niger', email: 'good@email.com', password: 'Ajaguraja@24@@', image: 'image')
+admin_1 = Administrator.create(number: '0555652356', name: 'Niger', email: 'good@email.com', password: 'Ajaguraja@24@@', image: 'image')
 admin_2 = Administrator.create(number: '0555651245', name: 'Koo', email: 'agya@email.com', password: 'Ajaguraja@24@@@', image: 'image')
 
 # Create Teachers
