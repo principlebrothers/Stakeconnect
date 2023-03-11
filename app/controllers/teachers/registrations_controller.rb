@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Teachers::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters
   respond_to :json
 
   private
@@ -16,5 +17,9 @@ class Teachers::RegistrationsController < Devise::RegistrationsController
         status: { code: 422, message: resource.errors.full_messages.join(',') }
       }
     end
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :number, :image])
   end
 end
