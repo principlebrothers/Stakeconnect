@@ -1,5 +1,6 @@
 class CourseReportsController < ApplicationController
   before_action :set_course_report, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /course_reports
   def index
