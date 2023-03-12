@@ -29,12 +29,9 @@ grade_2 = Grade.create(grade_num: 2, teacher_id: teacher_2.id)
 grade_3 = Grade.create(grade_num: 3, teacher_id: teacher_3.id)
 
 # Create Students
-student_1 = Student.create(name: 'Mercy', image: 'https://', parent_id: parent_1.id, grade_id: grade_1.id,
-                           administrator_id: admin_1.id)
-student_2 = Student.create(name: 'Kwame', image: 'https://', parent_id: parent_2.id, grade_id: grade_2.id,
-                           administrator_id: admin_1.id)
-student_3 = Student.create(name: 'Kofi', image: 'https://', parent_id: parent_3.id, grade_id: grade_3.id,
-                           administrator_id: admin_1.id)
+student_1 = Student.create(name: 'Mercy', image: 'https://', parent_id: parent_1.id, grade_id: grade_1.id)
+student_2 = Student.create(name: 'Kwame', image: 'https://', parent_id: parent_2.id, grade_id: grade_2.id)
+student_3 = Student.create(name: 'Kofi', image: 'https://', parent_id: parent_3.id, grade_id: grade_3.id)
 
 # Create Attendance
 attendance_1 = Attendance.create(date: Date.today, present: true, absent: false, student_id: student_1.id)
@@ -50,16 +47,16 @@ event_3 = Event.create(date: Date.tomorrow, location: 'Datus', image: 'https://'
                        description: 'School reopening for the 2021/2022 academic year', semester: 1, administrator_id: admin_1.id)
 
 # Create courses
-english = Course.create(name: 'English', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-maths = Course.create(name: 'Maths', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-science = Course.create(name: 'Science', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-social = Course.create(name: 'Social Studies', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-ict = Course.create(name: 'ICT', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-french = Course.create(name: 'French', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-art = Course.create(name: 'Art', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-music = Course.create(name: 'Music', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-religious = Course.create(name: 'Religious Studies', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
-health = Course.create(name: 'Health', semester: 1, grade_id: grade_1.id, administrator_id: admin_1.id)
+english = Course.create(name: 'English', semester: 1, grade_id: grade_1.id)
+maths = Course.create(name: 'Maths', semester: 1, grade_id: grade_1.id)
+science = Course.create(name: 'Science', semester: 1, grade_id: grade_1.id)
+social = Course.create(name: 'Social Studies', semester: 1, grade_id: grade_1.id)
+ict = Course.create(name: 'ICT', semester: 1, grade_id: grade_1.id)
+french = Course.create(name: 'French', semester: 1, grade_id: grade_1.id)
+art = Course.create(name: 'Art', semester: 1, grade_id: grade_1.id)
+music = Course.create(name: 'Music', semester: 1, grade_id: grade_1.id)
+religious = Course.create(name: 'Religious Studies', semester: 1, grade_id: grade_1.id)
+health = Course.create(name: 'Health', semester: 1, grade_id: grade_1.id)
 
 # Teacher_courses
 teacher_course_1 = TeacherCourse.create(teacher_id: teacher_1.id, course_id: english.id)
