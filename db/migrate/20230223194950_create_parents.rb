@@ -5,7 +5,7 @@ class CreateParents < ActiveRecord::Migration[7.0]
       t.integer :number, null: false
       t.string :email, null: false
       t.string :image, null: false
-      t.integer :role
+      t.string :role, null: false, default: 'parent'
       t.text :address, null: false
 
       t.timestamps
