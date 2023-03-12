@@ -6,7 +6,6 @@ class Ability
 
     can :manage, :all if user.role == 'admin'
 
-    # Teacher can manage all resources except over super admin and admin
     if user.role == 'teacher'
       can :create, Attendance
       can :update, Attendance, teacher_id: user.id
@@ -22,7 +21,6 @@ class Ability
     end
 
     return unless user.role == 'parent'
-
     can :read, Student, parent_id: user.id
     can :read, [Attendance, Report, Result], student: { parent_id: user.id }
     can :read, Course, grade: { students: { parent_id: user.id } }

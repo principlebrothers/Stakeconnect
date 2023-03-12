@@ -20,10 +20,4 @@ class Administrator < ApplicationRecord
   def role
     'admin'
   end
-
-  # rubocop:disable Lint/UselessAssignment
-  def jwt_payload
-    super
-  end
-  # rubocop:enable Lint/UselessAssignment
 end

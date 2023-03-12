@@ -22,10 +22,4 @@ class Parent < ApplicationRecord
   def role
     'parent'
   end
-
-  # rubocop:disable Lint/UselessAssignment
-  def jwt_payload
-    super
-  end
-  # rubocop:enable Lint/UselessAssignment
 end

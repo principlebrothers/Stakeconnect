@@ -23,10 +23,4 @@ class Teacher < ApplicationRecord
   def role
     'teacher'
   end
-
-  # rubocop:disable Lint/UselessAssignment
-  def jwt_payload
-    super
-  end
-  # rubocop:enable Lint/UselessAssignment
 end
