@@ -1,5 +1,7 @@
 class ParentsController < ApplicationController
+  before_action :authenticate_parent!
   before_action :set_parent, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /parents
   def index
