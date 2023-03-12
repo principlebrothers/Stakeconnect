@@ -81,7 +81,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["MY_APP_DATABASE_URL"] %>
+  url: <%= ENV["DATABASE_URL"] %>
   database: Stakeconnect_production
   username: Stakeconnect
   password: <%= ENV["STAKECONNECT_DATABASE_PASSWORD"] %>
