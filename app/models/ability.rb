@@ -1,6 +1,7 @@
 class Ability
   include CanCan::Ability
 
+  # rubocop:disable Metrics/MethodLength
   def initialize(user)
     return unless user.present?
 
@@ -21,6 +22,7 @@ class Ability
     end
 
     return unless user.role == 'parent'
+
     can :read, Student, parent_id: user.id
     can :read, [Attendance, Report, Result], student: { parent_id: user.id }
     can :read, Course, grade: { students: { parent_id: user.id } }
@@ -28,4 +30,5 @@ class Ability
     can :read, [Event, Teacher, Administrator]
     can %i[read update], Parent, id: user.id
   end
+  # rubocop:enable Metrics/MethodLength
 end
