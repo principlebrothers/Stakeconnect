@@ -4,24 +4,24 @@ class StudentsController < ApplicationController
 
   # GET /students
   def index
-    @students = Student.includes([:parent, :grade]).all
+    @students = Student.includes(%i[parent grade]).all
 
     render json: @students.to_json(include: {
                                      parent: { only: %i[name email number address] },
-                                      grade: { only: [:grade_num] },
+                                     grade: { only: [:grade_num] }
                                    })
   end
 
   # GET /students/1
   def show
     render json: @student, include: {
-                                    parent: { only: %i[name email number address] },
-                                    grade: { only: [:grade_num] },
-                                    reports: { only: %i[date remark],
-                                               include: { courses: { only: %i[name semester],
-                                                                     include: { results: { only: %i[type score
-                                                                                                    date] } } } } }
-                                  }
+      parent: { only: %i[name email number address] },
+      grade: { only: [:grade_num] },
+      reports: { only: %i[date remark],
+                 include: { courses: { only: %i[name semester],
+                                       include: { results: { only: %i[type score
+                                                                      date] } } } } }
+    }
   end
 
   # POST /students

@@ -5,14 +5,15 @@ class Parents::SessionsController < Devise::SessionsController
 
   private
 
-  def respond_with(resource, _opts = {})
+  def respond_with(_resource, _opts = {})
     render json: {
       status: { code: 200, message: 'Signed in successfully.', data: current_parent }
     }, status: :ok
   end
 
   def respond_to_on_destroy
-    jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1], Rails.application.credentials.fetch(:secret_key_base)).first
+    jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1],
+                             Rails.application.credentials.fetch(:secret_key_base)).first
     current_parent = Parent.find(jwt_payload['sub'])
     if current_parent
       render json: {

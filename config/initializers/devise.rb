@@ -322,7 +322,7 @@ Devise.setup do |config|
     jwt.expiration_time = 120.minutes.to_i
   end
 
-# Configuration for parent model
+  # Configuration for parent model
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
     jwt.dispatch_requests = [
@@ -334,7 +334,7 @@ Devise.setup do |config|
     jwt.expiration_time = 120.minutes.to_i
   end
 
-# Configuration for teacher model
+  # Configuration for teacher model
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
     jwt.dispatch_requests = [

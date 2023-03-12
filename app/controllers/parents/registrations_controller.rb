@@ -20,6 +20,6 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :number, :image, :address])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name number image address])
   end
 end
