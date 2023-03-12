@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  before_action :authenticate_teacher! || :authenticate_administrator!
+  before_action :authenticate_teacher!
   before_action :set_teacher, only: %i[show update destroy]
   load_and_authorize_resource
 
