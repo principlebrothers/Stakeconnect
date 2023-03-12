@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
     t.integer "number", null: false
     t.string "email", null: false
     t.string "image", null: false
-    t.integer "role"
+    t.string "role", default: "admin", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "jti", null: false
@@ -65,11 +65,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.integer "semester"
-    t.bigint "administrator_id", null: false
     t.bigint "grade_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["administrator_id"], name: "index_courses_on_administrator_id"
     t.index ["grade_id"], name: "index_courses_on_grade_id"
   end
 
@@ -110,7 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
     t.integer "number", null: false
     t.string "email", null: false
     t.string "image", null: false
-    t.integer "role"
+    t.string "role", default: "parent", null: false
     t.text "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -150,10 +148,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
     t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "administrator_id"
     t.bigint "parent_id"
     t.bigint "grade_id"
-    t.index ["administrator_id"], name: "index_students_on_administrator_id"
     t.index ["grade_id"], name: "index_students_on_grade_id"
     t.index ["parent_id"], name: "index_students_on_parent_id"
   end
@@ -172,7 +168,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
     t.integer "number", null: false
     t.string "email", null: false
     t.string "image", null: false
-    t.integer "role"
+    t.string "role", default: "teacher", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "jti", null: false
@@ -191,7 +187,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
   add_foreign_key "attendances", "students"
   add_foreign_key "course_reports", "courses"
   add_foreign_key "course_reports", "reports"
-  add_foreign_key "courses", "administrators"
   add_foreign_key "courses", "grades"
   add_foreign_key "events", "administrators"
   add_foreign_key "grades", "teachers"
@@ -199,7 +194,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_113318) do
   add_foreign_key "reports", "students"
   add_foreign_key "results", "courses"
   add_foreign_key "results", "students"
-  add_foreign_key "students", "administrators"
   add_foreign_key "students", "grades"
   add_foreign_key "students", "parents"
   add_foreign_key "teacher_courses", "courses"
