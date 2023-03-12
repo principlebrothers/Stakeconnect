@@ -8,11 +8,12 @@ Rails.application.routes.draw do
     sessions: 'parents/sessions',
     registrations: 'parents/registrations'
   }
-  
+
   devise_for :administrators, controllers: {
     sessions: 'administrators/sessions',
     registrations: 'administrators/registrations'
   }
+
   resources :course_reports
   resources :teacher_courses
   resources :reports
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   resources :events
   resources :attendances
   resources :students
-  # resources :teachers
-  # resources :parents
-  # resources :administrators
+  resources :teachers
+  resources :parents
+  resources :administrators
 end
