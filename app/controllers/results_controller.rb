@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
   before_action :set_result, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /results
   def index
