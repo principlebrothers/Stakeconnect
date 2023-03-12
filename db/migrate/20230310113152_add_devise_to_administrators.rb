@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class AddDeviseToAdministrators < ActiveRecord::Migration[7.0]
+lass AddDeviseToAdministrators < ActiveRecord::Migration[7.0]
   def self.up
     change_table :administrators do |t|
       ## Database authenticatable
