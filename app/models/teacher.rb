@@ -10,7 +10,7 @@ class Teacher < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :number, presence: true, uniqueness: true
   validates :image, presence: true
-  # validates :role, presence: true
+  validates :role, presence: true
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :grades
@@ -19,6 +19,10 @@ class Teacher < ApplicationRecord
   has_many :courses, through: :teacher_courses
   has_many :administrator_parent_teachers
   has_many :parents, through: :administrator_parent_teachers
+
+  def role
+    'teacher'
+  end
 
   def jwt_payload
     super
