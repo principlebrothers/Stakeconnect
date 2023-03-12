@@ -1,5 +1,7 @@
 class AdministratorsController < ApplicationController
+  before_action :authenticate_administrator!
   before_action :set_administrator, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /administrators
   def index
@@ -51,6 +53,6 @@ class AdministratorsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def administrator_params
-    params.require(:administrator).permit(:name, :number, :email, :image, :password)
+    params.require(:administrator).permit(:name, :number, :email, :image, :password, :role)
   end
 end
