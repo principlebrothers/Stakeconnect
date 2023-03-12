@@ -13,6 +13,8 @@ gem 'bullet', group: 'development'
 gem 'devise'
 gem 'devise-jwt'
 
+gem 'cancancan'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
