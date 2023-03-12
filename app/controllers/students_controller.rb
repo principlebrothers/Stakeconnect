@@ -1,9 +1,10 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /students
   def index
-    @students = Student.all
+    @students = Student.includes(%i[parent grade]).all
 
     render json: @students.to_json(include: {
                                      parent: { only: %i[name email number address] },
@@ -13,14 +14,14 @@ class StudentsController < ApplicationController
 
   # GET /students/1
   def show
-    render json: @student.to_json(include: {
-                                    parent: { only: %i[name email number address] },
-                                    grade: { only: [:grade_num] },
-                                    reports: { only: %i[date remark],
-                                               include: { courses: { only: %i[name semester],
-                                                                     include: { results: { only: %i[type score
-                                                                                                    date] } } } } }
-                                  })
+    render json: @student, include: {
+      parent: { only: %i[name email number address] },
+      grade: { only: [:grade_num] },
+      reports: { only: %i[date remark],
+                 include: { courses: { only: %i[name semester],
+                                       include: { results: { only: %i[type score
+                                                                      date] } } } } }
+    }
   end
 
   # POST /students
@@ -45,7 +46,6 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1
   def destroy
-    @student = set_student
     if @student.destroy
       render json: { message: 'Student deleted successfully' }, status: :ok
     else

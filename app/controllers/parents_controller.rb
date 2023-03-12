@@ -1,5 +1,7 @@
 class ParentsController < ApplicationController
+  before_action :authenticate_parent!
   before_action :set_parent, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /parents
   def index
@@ -56,6 +58,6 @@ class ParentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def parent_params
-    params.require(:parent).permit(:address)
+    params.require(:parent).permit(:name, :number, :email, :image, :role, :address, :password)
   end
 end

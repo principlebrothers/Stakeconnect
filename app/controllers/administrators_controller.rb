@@ -1,5 +1,7 @@
 class AdministratorsController < ApplicationController
+  before_action :authenticate_administrator!
   before_action :set_administrator, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /administrators
   def index
@@ -18,9 +20,9 @@ class AdministratorsController < ApplicationController
     @administrator = Administrator.new(administrator_params)
 
     if @administrator.save
-      render json: @administrator, status: :created, location: @administrator
+      render json: { status: :created, administrator: @administrator }
     else
-      render json: @administrator.errors, status: :unprocessable_entity
+      render json: { status: :unprocessable_entity, errors: @administrator.errors }
     end
   end
 
@@ -51,6 +53,6 @@ class AdministratorsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def administrator_params
-    params.require(:administrator).permit(:type)
+    params.require(:administrator).permit(:name, :number, :email, :image, :password, :role)
   end
 end

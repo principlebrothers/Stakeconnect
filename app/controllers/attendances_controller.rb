@@ -1,5 +1,6 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /attendances
   def index

@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /reports
   def index
@@ -13,7 +14,6 @@ class ReportsController < ApplicationController
 
   # GET /reports/1
   def show
-    @report = Report.find(params[:id])
     render json: @report.to_json(include: {
                                    student: { only: %i[id name image] },
                                    courses: { only: %i[name semester],
@@ -43,7 +43,6 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1
   def destroy
-    @report = set_report
     if @report.destroy
       render json: { message: 'Report deleted successfully' }, status: :ok
     else

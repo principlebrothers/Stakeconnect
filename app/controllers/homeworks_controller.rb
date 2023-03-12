@@ -1,5 +1,6 @@
 class HomeworksController < ApplicationController
   before_action :set_homework, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /homeworks
   def index

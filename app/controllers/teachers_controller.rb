@@ -1,5 +1,7 @@
 class TeachersController < ApplicationController
+  before_action :authenticate_teacher!
   before_action :set_teacher, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /teachers
   def index
@@ -51,6 +53,6 @@ class TeachersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def teacher_params
-    params.require(:teacher).permit(:type)
+    params.require(:teacher).permit(:name, :number, :email, :image, :role, :password)
   end
 end
