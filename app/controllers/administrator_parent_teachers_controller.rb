@@ -1,5 +1,6 @@
 class AdministratorParentTeachersController < ApplicationController
   before_action :set_administrator_parent_teacher, only: %i[show update destroy]
+  load_and_authorize_resource
 
   # GET /administrator_parent_teachers
   def index
