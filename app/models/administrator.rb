@@ -10,14 +10,16 @@ class Administrator < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :number, presence: true, uniqueness: true
   validates :image, presence: true
-  # validates :role, presence: true
+  validates :role, presence: true
   validates :password, presence: true, length: { minimum: 6 }
 
-  has_many :courses
-  has_many :students
   has_many :administrator_parent_teachers
   has_many :teachers, through: :administrator_parent_teachers
   has_many :parents, through: :administrator_parent_teachers
+
+  def role
+    'admin'
+  end
 
   def jwt_payload
     super
