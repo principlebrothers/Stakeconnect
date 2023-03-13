@@ -12,4 +12,20 @@ class ApplicationController < ActionController::API
   def current_user
     current_administrator || current_teacher || current_parent
   end
+
+  def authenticate_teacher!
+    if current_user.present? && (current_user.role == 'teacher' || current_user.role == 'admin')
+      true
+    else
+      render json: { message: 'You are not authorized to access this page' }, status: :unauthorized
+    end
+  end
+
+  def authenticate_parent!
+    if current_user.present? && (current_user.role == 'parent' || current_user.role == 'admin')
+      true
+    else
+      render json: { message: 'You are not authorized to access this page' }, status: :unauthorized
+    end
+  end
 end
