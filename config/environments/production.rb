@@ -2,7 +2,9 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.assets.enabled = false
+
+  Rails.secret_key_base = ENV['SECRET_KEY_BASE']
+  
   # Code is not reloaded between requests.
   config.cache_classes = true
 
