@@ -11,8 +11,8 @@ class Administrators::SessionsController < Devise::SessionsController
 
   # rubocop:disable Style/RedundantArgument
   def respond_to_on_destroy
-    jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1],
-                             Rails.application.credentials.fetch(:secret_key_base)).first
+    jwt_payload = JWT.decode(request.headers['Authorization'].split[1],
+                             Rails.application.secrets.secret_key_base).first
     current_administrator = Administrator.find(jwt_payload['sub'])
     if current_administrator
       render json: {

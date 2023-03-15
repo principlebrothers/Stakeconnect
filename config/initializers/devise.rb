@@ -310,7 +310,7 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   # Configuration for administrator model
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+    jwt.secret = Rails.application.secrets.secret_key_base
     jwt.dispatch_requests = [
       ['POST', %r{^/administrators/sign_in$}]
     ]
@@ -322,7 +322,7 @@ Devise.setup do |config|
 
   # Configuration for parent model
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+    jwt.secret = Rails.application.secrets.secret_key_base
     jwt.dispatch_requests = [
       ['POST', %r{^/parents/sign_in$}]
     ]
@@ -334,7 +334,7 @@ Devise.setup do |config|
 
   # Configuration for teacher model
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+    jwt.secret = Rails.application.secrets.secret_key_base
     jwt.dispatch_requests = [
       ['POST', %r{^/teachers/sign_in$}]
     ]
