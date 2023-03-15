@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  default_url_options  :protocol=> "https", :host => "stakeconnect-development.up.railway.app"
+  
   devise_for :teachers, controllers: {
     sessions: 'teachers/sessions',
     registrations: 'teachers/registrations'
