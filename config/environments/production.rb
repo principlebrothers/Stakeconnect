@@ -2,7 +2,6 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << 'stakeconnect-production.up.railway.app'
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
   # Code is not reloaded between requests.
@@ -13,6 +12,8 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  
+  config.hosts << "stakeconnect-production.up.railway.app"
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local = false
