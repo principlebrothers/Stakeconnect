@@ -3,8 +3,7 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << 'stakeconnect-production.up.railway.app'
-  config.secret_key_base ='8d195f8f6e2cd53bb8c4f3f36959ffac8f0fe5ab3680d43a70cded541344fd1f5f441e5d23e70a7f15c2f779da3aa0f19edde3a716927
-cf84367d36de417a9fd'
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
   # Code is not reloaded between requests.
   config.cache_classes = true
