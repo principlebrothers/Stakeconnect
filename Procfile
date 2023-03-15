@@ -1,1 +1,1 @@
-web: rake db:migrate && bin/rails sever -b 0.0.0.0 -p ${PORT:-3000}
+web: rake db:migrate && bin/rails sever -B 0.0.0.0 -p ${PORT:-3000}
