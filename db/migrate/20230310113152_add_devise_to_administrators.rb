@@ -1,4 +1,4 @@
-lass AddDeviseToAdministrators < ActiveRecord::Migration[7.0]
+class AddDeviseToAdministrators < ActiveRecord::Migration[7.0]
   def self.up
     change_table :administrators do |t|
       ## Database authenticatable
